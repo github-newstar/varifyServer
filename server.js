@@ -28,18 +28,19 @@ async function GetVarifyCode(call, callback) {
         console.log("uniqueId is ", uniqueId)
         let text_str = '您的验证码为' + uniqueId + '请三分钟内完成注册'
         //发送邮件
-        let mailOptions = {
-            from: '467301127@qq.com',
-            to: call.request.email,
-            subject: '验证码',
-            text: text_str,
-        };
-        let send_res = await emailModule.SendMail(mailOptions);
-        console.log("send res is ", send_res)
-        callback(null, {
-            email: call.request.email,
-            error: const_module.Errors.Success
-        });
+        // let mailOptions = {
+        //     from: '467301127@qq.com',
+        //     to: call.request.email,
+        //     subject: '验证码',
+        //     text: text_str,
+        // };
+        //为了测试暂时关闭邮箱发送验证
+        // let send_res = await emailModule.SendMail(mailOptions);
+        // console.log("send res is ", send_res)
+         callback(null, {
+             email: call.request.email,
+             error: const_module.Errors.Success
+         });
     } catch (error) {
         console.log("catch error is ", error)
         callback(null, {
